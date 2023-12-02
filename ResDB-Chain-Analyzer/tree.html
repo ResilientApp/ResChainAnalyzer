@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Tree</title>
+  <style>
+    /* Styling for the boxes */
+    .box {
+      width: 150px;
+      min-width: 150px;
+      height: 80px;
+      background-color: lightblue;
+      border: 1px solid #682424;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      white-space: pre;
+      border-top-width: 10px;
+      border-bottom-width: 10px;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+
+    .databox {
+      width: 98vw;
+      height: 120px;
+      border: 1px solid #000000;
+      position: relative;
+      display: flex;
+      overflow-x: auto;
+      justify-content: center;
+      font-size: 11px;
+      white-space: pre;
+      margin: 20px auto;
+    }
+
+    .root {
+        position: relative;
+        margin: 20px auto;
+        border-top-width: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Root box -->
+<div class="box root" id="root">Root</div>
+
+<script>
+  // JavaScript code to dynamically create a tree of boxes
+  var number_of_databoxes = 0;
+  class Databox {
+    constructor(parent) {
+        this.parent = parent;
+        this.databoxID = "databoxLayer" + ++number_of_databoxes;
+        var databox = document.createElement("div");
+        databox.className = "databox";
+        databox.id = this.databoxID
+
+        // Set position relative to the parent box
+        databox.style.top = parent.offsetTop + -20 + "px";
+        databox.style.borderTopColor = parent.style.borderBottomColor;
+        databox.style.borderBottomColor = randColor();
+
+        document.body.appendChild(databox);
+
+        return this;
+    }
+
+    createBox(data) {
+        var box = document.createElement("div");
+        box.className = "box";
+        box.addEventListener("click", function(e) {
+            create_child(this);
+        }, false);
+        box.textContent = "Wallet ID: " + data[0] + "\r\n" +
+                        "Transaction ID: " + data[1] + "\r\n" +
+                        "Coin Type: " + data[2] + "\n" +
+                        "Coin Amount: " + data[3];
+
+        // Set position relative to the parent box
+        //box.style.top = parent.offsetTop + topOffset + "px";
+        //box.style.left = parent.offsetLeft + leftOffset + "px";
+        box.style.borderTopColor = this.parent.style.borderBottomColor;
+        box.style.borderBottomColor = randColor();
+
+        document.getElementById(this.databoxID).appendChild(box);
+
+        return box;
+    }
+  }
+
+  const randColor = () =>  {
+    return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+  }
+
+  function create_child(input) {
+    const child = new Databox(input);
+    child.createBox(["0003", "1234", "Bitcoin", "100"]);
+    child.createBox(["0003", "1234", "Bitcoin", "100"]);
+    child.createBox(["0003", "1234", "Bitcoin", "100"]);
+  }
+
+  // Create child boxes
+  const child1 = new Databox(document.getElementById("root"), "databoxLayer1");
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  child1.createBox(["0003", "1234", "Bitcoin", "100"]);
+  //var child2 = createBox(document.getElementById("root"), ["0002", "1234", "Bitcoin", "100"], 100, 110);
+  //var child3 = createBox(child1, ["0003", "1234", "Bitcoin", "100"], -100, 110);
+  //var child4 = createBox(child1, ["0004", "1234", "Bitcoin", "100"], 100, 110);
+  //var child5 = createBox(child2, ["0005", "1234", "Bitcoin", "100"], 100, 110);
+</script>
+
+</body>
+</html>
