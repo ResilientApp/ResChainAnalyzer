@@ -1,0 +1,26 @@
+.styled-textbox {
+    padding: 10px;
+    border: 2px solid #666666;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+/* Style for the container (optional) */
+.textbox-container {
+    margin: 20px;
+}
+
+.height140 {
+    height: 140px;
+ }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+    text-align: center;
+    margin-bottom: 50%;
+    transform: translateY(30px);
+}

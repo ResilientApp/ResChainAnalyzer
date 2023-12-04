@@ -18,6 +18,8 @@
     <link rel='stylesheet' href='css/qloud-style.css' />
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
+    <!-- Tree CSS -->
+    <link rel="stylesheet" href="css/tree.css">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,6 +118,38 @@
                      </div>
                   </div>
                </div>
+               <div class="col-lg-6">
+                  <div class="finecharts float-e-margins">
+                     <div class="finecharts-title">
+                           <h5>Tree Visualizer</h5>
+                     </div>
+                     <div class="finecharts-content" height="140">
+                        <div class="textbox-container height140">
+                           <!-- Stylized textbox -->
+                           <input type="text" class="styled-textbox" id="walletID" placeholder="Enter Wallet ID...">
+
+                           <a onclick="redirect()">
+                           <rs-layer
+                              id="slider-6-slide-6-layer-9" 
+                              class="iq-btn-round iq-button rev-btn center"
+                              data-type="button"
+                              data-rsp_ch="on"
+                              data-xy="x:c;y:m;yo:-10px,-6px,52px,66px;"
+                              data-text="w:normal;s:16,14,14,14;l:18,14,14,14;"
+                              data-dim="minh:0px,none,none,none;"
+                              data-padding="t:15,12,12,12;r:30;b:15,12,12,12;l:30;"
+                              data-border="bor:4px,4px,4px,4px;"
+                              data-frame_0="rX:70deg;oZ:-50;"
+                              data-frame_1="oZ:-50;e:Power4.easeInOut;st:1100;sp:1750;sR:1100;"
+                              data-frame_999="o:0;st:w;sR:6150;"
+                              data-frame_hover="bgc:#0d1e67;bor:4px,4px,4px,4px;sp:500ms;e:Power4.easeInOut;bri:120%;"
+                              style="z-index:16;background-color:#007aff;"
+                           >Analyze 
+                           </rs-layer>
+                        </div>
+                     </div>
+                  </div>
+               </div>
          </div>
   </div>
 
@@ -150,6 +184,8 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Appear JavaScript -->
     <script src="js/appear.js"></script>
+
+    <script src="js/transition.js"></script>
 
     <!-- Jquery-migrate JavaScript -->
     <script src='js/jquery-migrate.min.js'></script>
