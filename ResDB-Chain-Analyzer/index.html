@@ -2,375 +2,351 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ResilientDB Blockchain Data Analyzer</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- REVOLUTION STYLE SHEETS -->
-    <link rel="stylesheet" href="revslider/css/rs6.css">
-    <!-- Typography CSS -->
-    <link rel="stylesheet" href="css/typography.css">
-    <!-- Style CSS -->
-    <link rel='stylesheet' href='css/qloud-style.css' />
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Qloud - Cloud Computing, Apps & Server Responsive HTML5 Template</title>
+   <!-- Favicon -->
+   <link rel="shortcut icon" href="images/favicon.ico" />
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!-- REVOLUTION STYLE SHEETS -->
+   <link rel="stylesheet" href="revslider/css/rs6.css">
+   <!-- Typography CSS -->
+   <link rel="stylesheet" href="css/typography.css">
+   <!-- Style CSS -->
+   <link rel='stylesheet' href='css/qloud-style.css' />
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="css/responsive.css">
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.js"></script>
+   <script src="js/jquery.js"></script>
+   <script src="js/bootstrap.js"></script>
+   <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+   <script src="js/plugins/slimscroll/jquery.slimscroll.js"></script>
 
-    <!-- Sparkline -->
-    <script src="js/plugins/sparkline/jquery.sparkline.js"></script>
+   <!-- Sparkline -->
+   <script src="js/plugins/sparkline/jquery.sparkline.js"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script src="js/finecharts.js"></script>
+   <!-- Custom and plugin javascript -->
+   <script src="js/finecharts.js"></script>
 
 
-    <!-- Sparkline data -->
-    <script src="js/settings/sparkline-settings.js"></script>
+   <!-- Sparkline data -->
+   <script src="js/settings/sparkline-settings.js"></script>
+
+   <style>
+      #chartContainer {
+         position: fixed;
+         bottom: 25%;
+         left: 50%;
+         transform: translateX(-50%);
+         /* Adjust the width and height based on your chart size */
+         width: 100%;
+         height: 25%;
+         /* Add any additional styling you need for your chart container */
+      }
+   </style>
 </head>
+
 <body>
-<!-- loading -->
-<div id="loading">
-<div id="loading-center">
-<div class="load-img" >
-<img src="images/loader.gif" alt="loader">
-</div>
-</div>
-</div>
-<!-- loading End -->
-    <!-- Header -->
-    <header id="main-header" class="header-main header2">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="cloud-databases.html">
-                            <img class="img-fluid" src="images/logo-black.png" alt="img">
-                        </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="menu-btn d-inline-block" id="menu-btn">
+   <!-- loading -->
+   <div id="loading">
+      <div id="loading-center">
+         <div class="load-img">
+            <img src="images/loader.gif" alt="loader">
+         </div>
+      </div>
+   </div>
+   <!-- loading End -->
+   <!-- Header -->
+   <header id="main-header" class="header-main header2">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12">
+               <nav class="navbar navbar-expand-lg navbar-light">
+                  <a class="navbar-brand" href="index.html">
+                     <img class="img-fluid" src="images/logo-black.png" alt="img">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse"
+                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                     aria-label="Toggle navigation">
+                     <span class="menu-btn d-inline-block" id="menu-btn">
                         <span class="line"></span>
-                            <span class="line"></span>
-                            <span class="line"></span>
-                            </span>
-                            <span class="ion-navicon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link active dropdown-toggle" href="#iq-home" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 Home
-                              </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item active" href="cloud-databases.html">Cloud Databases</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 About Us
-                              </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
-                                        <a class="dropdown-item" href="about-us-1.html">About Us 1</a>
-                                        <a class="dropdown-item" href="about-us-2.html"> About Us 2</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown-5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 Contact Us
-                              </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown-5">
-                                        <a class="dropdown-item" href="contact-us-1.html">Contact Us 1</a>
-                                        <a class="dropdown-item" href="contact-us-2.html">Contact Us 2</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                     </span>
+                     <span class="ion-navicon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                        <li class="nav-item dropdown">
+                           <a class="nav-link active dropdown-toggle" href="#iq-home" id="navbarDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Home
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item active" href="index.html">Home</a>
+                           </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown-1"
+                              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              About Us
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+                              <a class="dropdown-item" href="about-us-1.html">The Project</a>
+                              <a class="dropdown-item" href="contact-us-2.html">Contact Us</a>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
             </div>
-        </div>
-    </header>
-    <!-- Header End -->
-         <!-- START Home6 REVOLUTION SLIDER 6.1.8 --><p class="rs-p-wp-fix"></p>
-         <rs-module-wrap id="rev_slider_6_1_wrapper" data-alias="Home-6" data-source="gallery" style="background:transparent;padding:0;">
-            <rs-module id="rev_slider_6_1" style="display:none;" data-version="6.1.8">
-               <rs-slides>
-                  <rs-slide data-key="rs-6" data-title="Slide" data-anim="ei:d;eo:d;s:1000;r:0;t:fade;sl:0;">
-                     <img alt="banner-img" src="revslider/assets/transparent.png" data-bg="c:#eff7ff;" class="rev-slidebg" data-no-retina>
-<!--
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-0" 
-                        data-type="image"
-                        data-rsp_ch="on"
-                        data-xy="x:r;xo:-53px,-33px,-25px,-96px;yo:-27px,-17px,-6px,-6px;"
-                        data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
-                        data-dim="w:322px,206px,141px,86px;h:397px,254px,174px,107px;"
-                        data-vbility="t,f,t,t"
-                        data-basealign="slide"
-                        data-frame_0="y:-50,-32,-24,-14;"
-                        data-frame_1="st:250;sp:1000;sR:250;"
-                        data-frame_999="o:0;st:w;sR:7750;"
-                        data-loop_0="y:10px;"
-                        data-loop_999="y:-10px;sp:3000;e:Sine.easeInOut;yym:t;"
-                        style="z-index:11;"
-                     ><img alt="banner-img" src="revslider/assets/05s.png" width="354" height="437" data-no-retina> 
-                     </rs-layer><!--
+         </div>
+      </div>
+   </header>
+   <!-- Header End -->
+   <!-- START Home6 REVOLUTION SLIDER 6.1.8 -->
+   <p class="rs-p-wp-fix"></p>
+   <rs-module-wrap id="rev_slider_6_1_wrapper" data-alias="Home-6" data-source="gallery"
+      style="background:transparent;padding:0;">
+      <rs-module id="rev_slider_6_1" style="display:none;" data-version="6.1.8">
+         <rs-slides>
+            <rs-slide data-key="rs-6" data-title="Slide" data-anim="ei:d;eo:d;s:1000;r:0;t:fade;sl:0;">
+               <img alt="banner-img" src="revslider/assets/transparent.png" data-bg="c:#eff7ff;" class="rev-slidebg"
+                  data-no-retina>
+               <!--
+                     --><rs-layer id="slider-6-slide-6-layer-0" data-type="image" data-rsp_ch="on"
+                  data-xy="x:r;xo:-53px,-33px,-25px,-96px;yo:-27px,-17px,-6px,-6px;"
+                  data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
+                  data-dim="w:322px,206px,141px,86px;h:397px,254px,174px,107px;" data-vbility="t,f,t,t"
+                  data-basealign="slide" data-frame_0="y:-50,-32,-24,-14;" data-frame_1="st:250;sp:1000;sR:250;"
+                  data-frame_999="o:0;st:w;sR:7750;" data-loop_0="y:10px;"
+                  data-loop_999="y:-10px;sp:3000;e:Sine.easeInOut;yym:t;" style="z-index:11;"><img alt="banner-img"
+                     src="revslider/assets/05s.png" width="354" height="437" data-no-retina>
+               </rs-layer><!--
 
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-1" 
-                        data-type="image"
-                        data-rsp_ch="on"
-                        data-xy="x:r;xo:-153px,-97px,-72px,-34px;y:b;yo:4px,2px,45px,85px;"
-                        data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
-                        data-dim="w:480px,307px,200px,124px;h:525px,336px,219px,136px;"
-                        data-basealign="slide"
-                        data-frame_0="x:50,32,24,14;"
-                        data-frame_1="st:980;sp:1000;sR:980;"
-                        data-frame_999="o:0;st:w;sR:7020;"
-                        data-loop_0="y:-10px;"
-                        data-loop_999="y:10px;sp:3000;e:Sine.easeInOut;yym:t;"
-                        style="z-index:12;"
-                     ><img alt="banner-img" src="revslider/assets/06s.png" width="547" height="598" data-no-retina> 
-                     </rs-layer><!--
+                     --><rs-layer id="slider-6-slide-6-layer-1" data-type="image" data-rsp_ch="on"
+                  data-xy="x:r;xo:-153px,-97px,-72px,-34px;y:b;yo:4px,2px,45px,85px;"
+                  data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
+                  data-dim="w:480px,307px,200px,124px;h:525px,336px,219px,136px;" data-basealign="slide"
+                  data-frame_0="x:50,32,24,14;" data-frame_1="st:980;sp:1000;sR:980;" data-frame_999="o:0;st:w;sR:7020;"
+                  data-loop_0="y:-10px;" data-loop_999="y:10px;sp:3000;e:Sine.easeInOut;yym:t;" style="z-index:12;"><img
+                     alt="banner-img" src="revslider/assets/06s.png" width="547" height="598" data-no-retina>
+               </rs-layer><!--
 
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-2" 
-                        data-type="image"
-                        data-rsp_ch="on"
-                        data-xy="x:c,c,c,r;xo:180px,115px,111px,54px;y:b;yo:-106px,-67px,-35px,-26px;"
-                        data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
-                        data-dim="w:588px,376px,201px,155px;h:539px,344px,184px,142px;"
-                        data-basealign="slide"
-                        data-frame_0="y:50,32,24,14;"
-                        data-frame_1="sp:1000;"
-                        data-frame_999="o:0;st:w;sR:8000;"
-                        data-loop_0="x:10px;"
-                        data-loop_999="x:-10px;sp:3000;e:Sine.easeInOut;yym:t;"
-                        style="z-index:9;"
-                     ><img alt="banner-img" src="revslider/assets/07s.png" width="519" height="476" data-no-retina> 
-                     </rs-layer><!--
+                  <rs-layer id="slider-6-slide-6-layer-2" data-type="image" data-rsp_ch="on"
+                  data-xy="x:c,c,c,r;xo:180px,115px,111px,54px;y:b;yo:-106px,-67px,-35px,-26px;"
+                  data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
+                  data-dim="w:588px,376px,201px,155px;h:539px,344px,184px,142px;" data-basealign="slide"
+                  data-frame_0="y:50,32,24,14;" data-frame_1="sp:1000;" data-frame_999="o:0;st:w;sR:8000;"
+                  data-loop_0="x:10px;" data-loop_999="x:-10px;sp:3000;e:Sine.easeInOut;yym:t;" style="z-index:9;"><img
+                     alt="banner-img" src="revslider/assets/07s.png" width="519" height="476" data-no-retina>
+               </rs-layer>
 
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-3" 
-                        data-type="image"
-                        data-rsp_ch="on"
-                        data-xy="x:l,l,l,c;xo:145px,92px,87px,-86px;y:b;yo:-84px,-53px,-37px,-20px;"
-                        data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
-                        data-dim="w:538px,344px,207px,127px;h:402px,257px,154px,95px;"
-                        data-basealign="slide"
-                        data-frame_0="x:-50,-32,-24,-14;"
-                        data-frame_1="sp:1000;"
-                        data-frame_999="o:0;st:w;sR:8000;"
-                        data-loop_0="x:-10px;"
-                        data-loop_999="x:10px;sp:3000;e:Sine.easeInOut;yym:t;"
-                        style="z-index:8;"
-                     ><img alt="bannerimg" src="revslider/assets/08s.png" width="619" height="462" data-no-retina> 
-                     </rs-layer><!--
+                  <rs-layer id="slider-6-slide-6-layer-3" data-type="image" data-rsp_ch="on"
+                  data-xy="x:l,l,l,c;xo:145px,92px,87px,-86px;y:b;yo:-84px,-53px,-37px,-20px;"
+                  data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
+                  data-dim="w:538px,344px,207px,127px;h:402px,257px,154px,95px;" data-basealign="slide"
+                  data-frame_0="x:-50,-32,-24,-14;" data-frame_1="sp:1000;" data-frame_999="o:0;st:w;sR:8000;"
+                  data-loop_0="x:-10px;" data-loop_999="x:10px;sp:3000;e:Sine.easeInOut;yym:t;" style="z-index:8;"><img
+                     alt="bannerimg" src="revslider/assets/08s.png" width="619" height="462" data-no-retina>
+               </rs-layer>
 
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-4" 
-                        data-type="image"
-                        data-rsp_ch="on"
-                        data-xy="xo:-55px,-35px,-20px,-17px;y:b;yo:69px,44px,38px,67px;"
-                        data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
-                        data-dim="w:291px,186px,114px,70px;h:539px,344px,211px,130px;"
-                        data-basealign="slide"
-                        data-frame_0="x:-50,-32,-24,-14;"
-                        data-frame_1="st:990;sp:1000;sR:990;"
-                        data-frame_999="o:0;st:w;sR:7010;"
-                        data-loop_0="y:10px;"
-                        data-loop_999="y:-10px;sp:3000;e:Sine.easeInOut;yym:t;"
-                        style="z-index:13;"
-                     ><img alt="bannerimg" src="revslider/assets/09.png" width="268" height="496" data-no-retina> 
-                     </rs-layer><!--
+                     --><rs-layer id="slider-6-slide-6-layer-4" data-type="image" data-rsp_ch="on"
+                  data-xy="xo:-55px,-35px,-20px,-17px;y:b;yo:69px,44px,38px,67px;"
+                  data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
+                  data-dim="w:291px,186px,114px,70px;h:539px,344px,211px,130px;" data-basealign="slide"
+                  data-frame_0="x:-50,-32,-24,-14;" data-frame_1="st:990;sp:1000;sR:990;"
+                  data-frame_999="o:0;st:w;sR:7010;" data-loop_0="y:10px;"
+                  data-loop_999="y:-10px;sp:3000;e:Sine.easeInOut;yym:t;" style="z-index:13;"><img alt="bannerimg"
+                     src="revslider/assets/09.png" width="268" height="496" data-no-retina>
+               </rs-layer><!--
 
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-6" 
-                        data-type="image"
-                        data-rsp_ch="on"
-                        data-xy="xo:-56px,-35px,-20px,-110px;yo:-33px,-21px,-9px,-2px;"
-                        data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
-                        data-dim="w:326px,208px,140px,86px;h:403px,257px,173px,106px;"
-                        data-vbility="t,t,f,f"
-                        data-basealign="slide"
-                        data-frame_0="y:-50,-32,-24,-14;"
-                        data-frame_1="st:250;sp:1000;sR:250;"
-                        data-frame_999="o:0;st:w;sR:7750;"
-                        data-loop_0="y:-10px;"
-                        data-loop_999="y:10px;sp:3000;e:Sine.easeInOut;yym:t;"
-                        style="z-index:10;"
-                     ><img alt="bannerimg" src="revslider/assets/10.png" width="357" height="441" data-no-retina> 
-                     </rs-layer><!--
+                     --><rs-layer id="slider-6-slide-6-layer-6" data-type="image" data-rsp_ch="on"
+                  data-xy="xo:-56px,-35px,-20px,-110px;yo:-33px,-21px,-9px,-2px;"
+                  data-text="w:normal;s:20,12,9,5;l:0,16,12,7;"
+                  data-dim="w:326px,208px,140px,86px;h:403px,257px,173px,106px;" data-vbility="t,t,f,f"
+                  data-basealign="slide" data-frame_0="y:-50,-32,-24,-14;" data-frame_1="st:250;sp:1000;sR:250;"
+                  data-frame_999="o:0;st:w;sR:7750;" data-loop_0="y:-10px;"
+                  data-loop_999="y:10px;sp:3000;e:Sine.easeInOut;yym:t;" style="z-index:10;"><img alt="bannerimg"
+                     src="revslider/assets/10.png" width="357" height="441" data-no-retina>
+               </rs-layer><!--
 
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-7" 
-                        class="textgyreadventor"
-                        data-type="text"
-                        data-color="#142149"
-                        data-rsp_ch="on"
-                        data-xy="x:c;xo:0,0,0,5px;yo:160px,102px,63px,78px;"
-                        data-text="w:normal;s:60,38,45,36;l:70,44,55,45;a:center;"
-                        data-frame_0="rX:70deg;oZ:-50;"
-                        data-frame_1="oZ:-50;e:Power4.easeInOut;st:290;sp:1750;sR:290;"
-                        data-frame_999="o:0;st:w;sR:6960;"
-                        style="z-index:14;"
-                        > <b>ResilientDB</b><br /> Blockchain Data Analyzer  
-                     </rs-layer><!--
 
-                     --><rs-layer
-                        id="slider-6-slide-6-layer-8" 
-                        data-type="text"
-                        data-color="#5e7290"
-                        data-rsp_ch="on"
-                        data-xy="x:c;y:m;yo:-100px,-70px,-19px,-14px;"
-                        data-text="w:normal;s:16,14,14,13;l:26,24,24,24;a:center;"
-                        data-frame_0="rX:70deg;oZ:-50;"
-                        data-frame_1="oZ:-50;e:Power4.easeInOut;st:830;sp:1750;sR:830;"
-                        data-frame_999="o:0;st:w;sR:6420;"
-                        style="z-index:15;"
-                     >An in-depth graphical analysis of blockchain transaction history<br> powered by NexRes ResilientDB.  
-                     </rs-layer><!--
+                     --><rs-layer id="slider-6-slide-6-layer-7" class="textgyreadventor" data-type="text"
+                  data-color="#142149" data-rsp_ch="on" data-xy="x:c;xo:0,0,0,5px;yo:160px,102px,63px,78px;"
+                  data-text="w:normal;s:60,38,45,36;l:70,44,55,45;a:center;" data-frame_0="rX:70deg;oZ:-50;"
+                  data-frame_1="oZ:-50;e:Power4.easeInOut;st:290;sp:1750;sR:290;" data-frame_999="o:0;st:w;sR:6960;"
+                  style="z-index:14;"> <b>ResilientDB</b><br /> Blockchain Data Analyzer
+               </rs-layer><!--
+
+                     
+               -->
+               <rs-layer id="slider-6-slide-6-layer-8" data-type="text" data-color="#5e7290" data-rsp_ch="on"
+                  data-xy="x:c;y:m;yo:-100px,-70px,-19px,-14px;"
+                  data-text="w:normal;s:16,14,14,13;l:26,24,24,24;a:center;" data-frame_0="rX:70deg;oZ:-50;"
+                  data-frame_1="oZ:-50;e:Power4.easeInOut;st:830;sp:1750;sR:830;" data-frame_999="o:0;st:w;sR:6420;"
+                  style="z-index:15;">An in-depth graphical analysis of blockchain transaction history<br> powered by
+                  NexRes ResilientDB.
+               </rs-layer><!--
 
                      -->
-                     <a href="analytics.html">
-                     <rs-layer
-                        id="slider-6-slide-6-layer-9" 
-                        class="iq-btn-round iq-button rev-btn"
-                        data-type="button"
-                        data-rsp_ch="on"
-                        data-xy="x:c;y:m;yo:-10px,-6px,52px,66px;"
-                        data-text="w:normal;s:16,14,14,14;l:18,14,14,14;"
-                        data-dim="minh:0px,none,none,none;"
-                        data-padding="t:15,12,12,12;r:30;b:15,12,12,12;l:30;"
-                        data-border="bor:4px,4px,4px,4px;"
-                        data-frame_0="rX:70deg;oZ:-50;"
-                        data-frame_1="oZ:-50;e:Power4.easeInOut;st:1100;sp:1750;sR:1100;"
-                        data-frame_999="o:0;st:w;sR:6150;"
-                        data-frame_hover="bgc:#0d1e67;bor:4px,4px,4px,4px;sp:500ms;e:Power4.easeInOut;bri:120%;"
-                        style="z-index:16;background-color:#007aff;"
-                     >Analyze 
-                     </rs-layer><!--
--->                  </rs-slide>
-               </rs-slides>
-               <rs-progress class="rs-bottom" style="visibility: hidden !important;"></rs-progress>
-            </rs-module>
+               <rs-layer id="slider-6-slide-6-layer-9" class="iq-btn-round iq-button rev-btn" data-type="button"
+                  href="tree.html" data-rsp_ch="on" data-xy="x:c;y:m;yo:-10px,-6px,52px,66px;"
+                  data-text="w:normal;s:16,14,14,14;l:18,14,14,14;" data-dim="minh:0px,none,none,none;"
+                  data-padding="t:15,12,12,12;r:30;b:15,12,12,12;l:30;" data-border="bor:4px,4px,4px,4px;"
+                  data-frame_0="rX:70deg;oZ:-50;" data-frame_1="oZ:-50;e:Power4.easeInOut;st:1100;sp:1750;sR:1100;"
+                  data-frame_999="o:0;st:w;sR:6150;"
+                  data-frame_hover="bgc:#0d1e67;bor:4px,4px,4px,4px;sp:500ms;e:Power4.easeInOut;bri:120%;"
+                  style="z-index:16;background-color:#007aff;">Analyze
+               </rs-layer><!--
+                  -->
+               <div class="col-lg-6" id="chartContainer">
+                  <div class="finecharts float-e-margins">
+                     <div class="finecharts-title">
+                        <h5>Monthly Transactions in Past Year</h5>
+                     </div>
+                     <div class="finecharts-content">
+                        <div>
+                           <canvas id="lineChart" height="135"></canvas>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            </rs-slide>
+         </rs-slides>
+         <rs-progress class="rs-bottom" style="visibility: hidden !important;"></rs-progress>
+      </rs-module>
       <script>
-      if(typeof revslider_showDoubleJqueryError === "undefined") {
-         function revslider_showDoubleJqueryError(sliderID) {
-            var err = "<div class='rs_error_message_box'>";
-            err += "<div class='rs_error_message_oops'>Oops...</div>";
-            err += "<div class='rs_error_message_content'>";
-            err += "You have some jquery.js library include that comes after the Slider Revolution files js inclusion.<br>";
-            err += "To fix this, you can:<br>&nbsp;&nbsp;&nbsp; 1. Set 'Module General Options' -> 'Advanced' -> 'jQuery & OutPut Filters' -> 'Put JS to Body' to on";
-            err += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jQuery.js inclusion and remove it";
-            err += "</div>";
-         err += "</div>";
-            jQuery(sliderID).show().html(err);
+         if (typeof revslider_showDoubleJqueryError === "undefined") {
+            function revslider_showDoubleJqueryError(sliderID) {
+               var err = "<div class='rs_error_message_box'>";
+               err += "<div class='rs_error_message_oops'>Oops...</div>";
+               err += "<div class='rs_error_message_content'>";
+               err += "You have some jquery.js library include that comes after the Slider Revolution files js inclusion.<br>";
+               err += "To fix this, you can:<br>&nbsp;&nbsp;&nbsp; 1. Set 'Module General Options' -> 'Advanced' -> 'jQuery & OutPut Filters' -> 'Put JS to Body' to on";
+               err += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jQuery.js inclusion and remove it";
+               err += "</div>";
+               err += "</div>";
+               jQuery(sliderID).show().html(err);
+            }
          }
-      }
       </script>
-         </rs-module-wrap>
-         <!-- END REVOLUTION SLIDER -->
-<!-- Icon-box Start -->
+   </rs-module-wrap>
+   <!-- END REVOLUTION SLIDER -->
 
-<!-- Icon-box End -->
+   <!-- Icon-box Start -->
 
-<!-- Icon-box Start -->
+   <!-- Icon-box End -->
 
-<!-- Icon-box End -->
-<!-- Options Start -->
+   <!-- Icon-box Start -->
 
-<!-- Options End -->
+   <!-- Icon-box End -->
+   <!-- Options Start -->
 
-    <!-- Footer Start -->
+   <!-- Options End -->
 
-    <!-- Footer End -->
-	<!-- === back-to-top === -->
-	<div id="back-to-top">
-		<a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
-	</div>
-	<!-- === back-to-top End === -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.4.1.js"></script>
-    <!-- jQuery  for scroll me js -->
-    <script src='js/jquery-min.js'></script>
-    <!-- popper  -->
-    <script src="js/popper.min.js"></script>
-    <!--  bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Appear JavaScript -->
-    <script src="js/appear.js"></script>
+   <!-- Footer Start -->
+   <footer id="contact" class=" iq-over-dark-90">
 
-    <!-- Jquery-migrate JavaScript -->
-    <script src='js/jquery-migrate.min.js'></script>
-    <!-- Scripts JavaScript -->
-    <script src='js/scripts.js'></script>
-    <!-- countdownTimer JavaScript -->
-    <script src='js/jQuery.countdownTimer.min.js'></script>
-    <!-- Tox-progress JavaScript -->
-    <script src='js/tox-progress.min.js'></script>
-    <!-- Timeline JavaScript -->
-    <script src='js/timeline.js'></script>
-    <!-- Timeline min JavaScript -->
-    <script src='js/timeline.min.js'></script>
-    <!-- Slick JavaScript -->
-    <script src='js/slick.min.js'></script>
-    <!-- Popper JavaScript -->
-    <script src='js/popper.min.js'></script>
-    <!-- Owl.carousel JavaScript -->
-    <script src='js/owl.carousel.min.js'></script>
-    <!-- Countdown JavaScript -->
-    <script src='js/countdown.js'></script>
-    <!-- Jquery.countTo JavaScript -->
-    <script src='js/jquery.countTo.js'></script>
-    <!-- Magnific-popup JavaScript -->
-    <script src='js/jquery.magnific-popup.min.js'></script>
-    <!-- Isotope.pkgd.min JavaScript -->
-    <script src='js/isotope.pkgd.min.js'></script>
-    <!-- Wow JavaScript -->
-    <script src='js/wow.min.js'></script>
-    <!--  Custom JavaScript -->
-    <script src="js/custom.js"></script>
-    <!-- REVOLUTION JS FILES -->
-    <script src="revslider/js/revolution.tools.min.js"></script>
-    <script src="revslider/js/rs6.min.js"></script>
-            <script>           
-               var   revapi6,
-                  tpj;
-               jQuery(function() {
-                  tpj = jQuery;
-                  if(tpj("#rev_slider_6_1").revolution == undefined){
-                     revslider_showDoubleJqueryError("#rev_slider_6_1");
-                  }else{
-                     revapi6 = tpj("#rev_slider_6_1").show().revolution({
-                        jsFileLocation:"js/",
-                        sliderLayout:"fullscreen",
-                        visibilityLevels:"1240,1024,778,480",
-                        gridwidth:"1600,1024,778,480",
-                        gridheight:"900,600,450,450",
-                        minHeight:"none",
-                        spinner:"spinner0",
-                        editorheight:"900,600,450,450",
-                        responsiveLevels:"1240,1024,778,480",
-                        fullScreenOffset:"0px",
-                        disableProgressBar:"on",
-                        navigation: {
-                           onHoverStop:false
-                        },
-                        fallbacks: {
-                           allowHTML5AutoPlayOnAndroid:true
-                        },
-                     });
-                  }
-                  
-               });
-            </script>
+   </footer>
+   <!-- Footer End -->
+   <!-- === back-to-top === -->
+
+   <script src="Finecharts/js/jquery.js"></script>
+   <script src="Finecharts/js/bootstrap.js"></script>
+   <script src="Finecharts/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+   <script src="Finecharts/js/plugins/slimscroll/jquery.slimscroll.js"></script>
+
+   <!-- Custom and plugin javascript -->
+   <script src="Finecharts/js/finecharts.js"></script>
+
+   <!-- ChartJS-->
+   <script src="Finecharts/js/plugins/chartJs/Chart.js"></script>
+   <script src="Finecharts/js/settings/chartjs-settings.js"></script>
+
+   <div id="back-to-top">
+      <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
+   </div>
+   <!-- === back-to-top End === -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="js/jquery-3.4.1.js"></script>
+   <!-- jQuery  for scroll me js -->
+   <script src='js/jquery-min.js'></script>
+   <!-- popper  -->
+   <script src="js/popper.min.js"></script>
+   <!--  bootstrap -->
+   <script src="js/bootstrap.min.js"></script>
+   <!-- Appear JavaScript -->
+   <script src="js/appear.js"></script>
+
+   <!-- Jquery-migrate JavaScript -->
+   <script src='js/jquery-migrate.min.js'></script>
+   <!-- Scripts JavaScript -->
+   <script src='js/scripts.js'></script>
+   <!-- countdownTimer JavaScript -->
+   <script src='js/jQuery.countdownTimer.min.js'></script>
+   <!-- Tox-progress JavaScript -->
+   <script src='js/tox-progress.min.js'></script>
+   <!-- Timeline JavaScript -->
+   <script src='js/timeline.js'></script>
+   <!-- Timeline min JavaScript -->
+   <script src='js/timeline.min.js'></script>
+   <!-- Slick JavaScript -->
+   <script src='js/slick.min.js'></script>
+   <!-- Popper JavaScript -->
+   <script src='js/popper.min.js'></script>
+   <!-- Owl.carousel JavaScript -->
+   <script src='js/owl.carousel.min.js'></script>
+   <!-- Countdown JavaScript -->
+   <script src='js/countdown.js'></script>
+   <!-- Jquery.countTo JavaScript -->
+   <script src='js/jquery.countTo.js'></script>
+   <!-- Magnific-popup JavaScript -->
+   <script src='js/jquery.magnific-popup.min.js'></script>
+   <!-- Isotope.pkgd.min JavaScript -->
+   <script src='js/isotope.pkgd.min.js'></script>
+   <!-- Wow JavaScript -->
+   <script src='js/wow.min.js'></script>
+   <!--  Custom JavaScript -->
+   <script src="js/custom.js"></script>
+   <!-- REVOLUTION JS FILES -->
+   <script src="revslider/js/revolution.tools.min.js"></script>
+   <script src="revslider/js/rs6.min.js"></script>
+   <script>
+      var revapi6,
+         tpj;
+      jQuery(function () {
+         tpj = jQuery;
+         if (tpj("#rev_slider_6_1").revolution == undefined) {
+            revslider_showDoubleJqueryError("#rev_slider_6_1");
+         } else {
+            revapi6 = tpj("#rev_slider_6_1").show().revolution({
+               jsFileLocation: "js/",
+               sliderLayout: "fullscreen",
+               visibilityLevels: "1240,1024,778,480",
+               gridwidth: "1600,1024,778,480",
+               gridheight: "900,600,450,450",
+               minHeight: "none",
+               spinner: "spinner0",
+               editorheight: "900,600,450,450",
+               responsiveLevels: "1240,1024,778,480",
+               fullScreenOffset: "0px",
+               disableProgressBar: "on",
+               navigation: {
+                  onHoverStop: false
+               },
+               fallbacks: {
+                  allowHTML5AutoPlayOnAndroid: true
+               },
+            });
+         }
+
+      });
+   </script>
 
 </body>
+
 </html>

@@ -1010,7 +1010,7 @@ ol.commentlist .pingback a:hover, ol.commentlist .trackback a:hover { color: #0d
 .iq-breadcrumb.text-left .breadcrumb li a, .iq-breadcrumb.text-left .breadcrumb-item+.breadcrumb-item::before { color: #ffffff; margin-bottom: 0; }
 .breadcrumb li { display: inline-block; word-break: break-all; }
 .iq-breadcrumb-two { padding: 45px 0; position: relative; z-index: 2; }
-.iq-breadcrumb-one { display: block; padding: 150px 0 100px; z-index: 9; position: relative; background: #0d1e67; }
+.iq-breadcrumb-one { display: block; padding: 25px 0 25px; z-index: 9; position: relative; background: #27a1c0; }
 .iq-breadcrumb-one ol li a { color: #fff; text-decoration: none; }
 .iq-breadcrumb-one ol li { list-style: none; display: inline-block; }
 .iq-breadcrumb-one .breadcrumb-item+.breadcrumb-item::before { content: "\f3d3"; color: #ffffff; font-family: "Ionicons"; }
