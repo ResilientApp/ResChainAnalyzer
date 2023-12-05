@@ -39,7 +39,7 @@ class DataboxSet {
 
         // Set position relative to the parent box
         //databox.style.top = parent.offsetTop + -20 + "px";
-        databox.style.borderTopColor = parent.style.borderBottomColor;
+        //databox.style.borderTopColor = parent.style.borderBottomColor;
 
         document.body.appendChild(databox);
         
