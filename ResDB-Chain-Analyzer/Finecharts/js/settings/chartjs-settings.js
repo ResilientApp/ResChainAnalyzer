@@ -673,14 +673,17 @@ function create_dictionary_of_transactions() {
     for (let i = 0; i < elementsWithTime.length; i++) {
         const block = elementsWithTime[i];
         const timeData = block.metadata.time;
-        const date = new Date(timeData * 1000);
-        const month = date.getMonth();
+        const transactionDate = new Date(timeData * 1000);
+        const transactionMonth = transactionDate.getMonth();
 
-        monthlyTransactions[month]++;
+        const pastYearThreshold = new Date();
+        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
+
+        if ((transactionDate > pastYearThreshold))
+        {
+            monthlyTransactions[transactionMonth]++;
+        }
     }
 
-    for (let i = 0; i < monthlyTransactions.length; i++) {
-        console.log(monthlyTransactions[i]);
-    }
     return monthlyTransactions;
 }
