@@ -20,11 +20,14 @@
    <link rel="stylesheet" href="css/responsive.css">
    <!-- Tree CSS -->
    <link rel="stylesheet" href="css/tree.css">
+   <!-- Autocomplete CSS -->
+   <link rel="stylesheet" href="css/autocomplete.css">
 
    <script src="js/jquery.js"></script>
    <script src="js/bootstrap.js"></script>
    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
    <script src="js/plugins/slimscroll/jquery.slimscroll.js"></script>
+   <script src="js/autocomplete.js"></script>
 
    <!-- Sparkline -->
    <script src="js/plugins/sparkline/jquery.sparkline.js"></script>
@@ -191,8 +194,10 @@
 
                <div class="col-lg-6 fadeinAnim" id="chartContainer" style="margin-left: auto; margin-right: auto;">
                   <!-- Stylized textbox -->
-                  <input type="text" class="styled-textbox" id="walletID" placeholder="Enter Wallet ID..." style="transform: translateY(-70px);">
-                  <div class="finecharts float-e-margins">
+                 <form autocomplete="off"><input type="text" class="styled-textbox" id="walletID" onkeyup="showResults(this.value)" placeholder="Enter Wallet ID..." style="transform: translateY(-70px);">
+		 <div id="result"></div>
+		 </form>
+		 <div class="finecharts float-e-margins">
                      <div class="finecharts-title">
                         <h5>Monthly Transactions in the Past Year</h5>
                      </div>
