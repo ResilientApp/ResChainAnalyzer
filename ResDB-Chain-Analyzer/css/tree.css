@@ -16,6 +16,11 @@
     height: 140px;
  }
 
+.walletidcontainer {
+    max-height: 140px;
+    overflow-y: auto;
+}
+
 .center {
     display: block;
     margin-left: auto;
