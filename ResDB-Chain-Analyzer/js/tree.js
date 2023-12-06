@@ -52,7 +52,7 @@ class DataboxSet {
         tooltip.className = "tooltiptext";
         tooltip.append("Date: " + String(get_date(jsonObj.metadata.time)) + "\r\n" +
                         "Age: " + get_age(jsonObj.metadata.time) + "\r\n" +
-                        "Transaction ID: " + jsonObj.id + "\r\n" +
+                        "Transaction ID: " + "\r\n" + jsonObj.id + "\r\n" +
                         "Sender ID: " + jsonObj.inputs.sender + "\r\n" +
                         "Recipient ID: " + jsonObj.inputs.recipient + "\r\n" +
                         "Amount: " + jsonObj.inputs.quantity
@@ -160,5 +160,6 @@ if (protocol == "") {
 parent.name = protocol;
 parent.setAttribute("date", 100);
 console.log(parent.getAttribute("date"));
+parent.append("WalletID: " + protocol.slice(0,13) + "...");
 const child1 = new DataboxSet(document.getElementById("root"), "databoxLayer1");
 add_wallet_transactions(parent, child1)

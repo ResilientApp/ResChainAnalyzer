@@ -18,6 +18,8 @@
    <link rel='stylesheet' href='css/qloud-style.css' />
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="css/responsive.css">
+   <!-- Tree CSS -->
+   <link rel="stylesheet" href="css/tree.css">
 
    <script src="js/jquery.js"></script>
    <script src="js/bootstrap.js"></script>
@@ -174,9 +176,9 @@
                </rs-layer><!--
 
                      -->
-                     <a href="tree.html"> 
+               <a onclick="redirect()"> 
                <rs-layer id="slider-6-slide-6-layer-9" class="iq-btn-round iq-button rev-btn" data-type="button"
-                  href="tree.html" data-rsp_ch="on" data-xy="x:c;y:m;yo:-10px,-6px,52px,66px;"
+                  onclick="redirect()" data-rsp_ch="on" data-xy="x:c;y:m;yo:-10px,-6px,52px,66px;"
                   data-text="w:normal;s:16,14,14,14;l:18,14,14,14;" data-dim="minh:0px,none,none,none;"
                   data-padding="t:15,12,12,12;r:30;b:15,12,12,12;l:30;" data-border="bor:4px,4px,4px,4px;"
                   data-frame_0="rX:70deg;oZ:-50;" data-frame_1="oZ:-50;e:Power4.easeInOut;st:1100;sp:1750;sR:1100;"
@@ -186,10 +188,13 @@
                      </a>
                </rs-layer><!--
                   -->
-               <div class="col-lg-6" id="chartContainer">
+
+               <div class="col-lg-6 fadeinAnim" id="chartContainer" style="margin-left: auto; margin-right: auto;">
+                  <!-- Stylized textbox -->
+                  <input type="text" class="styled-textbox" id="walletID" placeholder="Enter Wallet ID..." style="transform: translateY(-70px);">
                   <div class="finecharts float-e-margins">
                      <div class="finecharts-title">
-                        <h5>Monthly Transactions in Past Year</h5>
+                        <h5>Monthly Transactions in the Past Year</h5>
                      </div>
                      <div class="finecharts-content">
                         <div>
@@ -198,7 +203,6 @@
                      </div>
                   </div>
                </div>
-
             </rs-slide>
          </rs-slides>
          <rs-progress class="rs-bottom" style="visibility: hidden !important;"></rs-progress>
@@ -246,6 +250,8 @@
 
    <!-- Custom and plugin javascript -->
    <script src="Finecharts/js/finecharts.js"></script>
+
+   <script src="js/transition.js"></script>
 
    <!-- ChartJS-->
    <script src="Finecharts/js/plugins/chartJs/Chart.js"></script>
