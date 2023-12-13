@@ -10,22 +10,44 @@ function create_dictionary_of_transactions(jsonFile) {
     jsonFile = JSON.parse(jsonFile);
     for (const jsonObj of jsonFile) {
         try {
-            dict[jsonObj.inputs.sender] = [];
+            dict[jsonObj.inputs[0].owners_before[0]] = [];
         } catch (error) {}
     }
 
     for (const jsonObj of jsonFile) {
         try {
-            dict[jsonObj.inputs.sender].push(jsonObj);
+            //console.log(jsonObj);
+            dict[jsonObj.inputs[0].owners_before[0]].push(jsonObj);
         } catch (error) {}
     }
 
     for (const [key, value] of Object.entries(dict)) {
-        dict[key].sort((a,b) => b.metadata.time - a.metadata.time);
+        dict[key].sort((a,b) => get_time(b) - get_time(a));
         console.log(key);
     }
 
     return dict;
+}
+
+function get_time(jsonObj) {
+    if (jsonObj.asset.data.Timestamp != undefined) {
+        var date = new Date(jsonObj.asset.data.Timestamp);
+        if (!isNaN(date.getTime()) && date.getTime() != undefined)
+            return date.getTime();
+    }
+    else if (jsonObj.asset.data.timestamp != undefined) {
+        var date = new Date(jsonObj.asset.data.timestamp/1000);
+        if (!isNaN(date.getTime()) && date.getTime() != undefined)
+            return date.getTime();
+    }
+    else if (jsonObj.asset.data.time != undefined) {
+        var date = new Date(jsonObj.asset.data.time/1000);
+        if (!isNaN(date.getTime()) && date.getTime() != undefined)
+            return date.getTime();
+    }
+    else {
+        return "N/A";
+    }
 }
 
 class DataboxSet {
@@ -49,12 +71,12 @@ class DataboxSet {
     createToolTip(jsonObj) {
         var tooltip = document.createElement("span");
         tooltip.className = "tooltiptext";
-        tooltip.append("Date: " + String(get_date(jsonObj.metadata.time)) + "\r\n" +
-                        "Age: " + get_age(jsonObj.metadata.time) + "\r\n" +
+        tooltip.append("Date: " + String(get_date(get_time(jsonObj))) + "\r\n" +
+                        "Age: " + get_age(get_time(jsonObj)) + "\r\n" +
                         "Transaction ID: " + "\r\n" + jsonObj.id + "\r\n" +
-                        "Sender ID: " + jsonObj.inputs.sender + "\r\n" +
-                        "Recipient ID: " + jsonObj.inputs.recipient + "\r\n" +
-                        "Amount: " + jsonObj.inputs.quantity
+                        "Sender ID: " + jsonObj.inputs[0].owners_before[0] + "\r\n" +
+                        "Recipient ID: " + jsonObj.outputs[0].public_keys[0] + "\r\n" +
+                        "Amount: " + jsonObj.outputs[0].amount
         ); 
 
         return tooltip;
@@ -64,24 +86,24 @@ class DataboxSet {
     createBox(parent, jsonObj) {
         var box = document.createElement("div");
         box.className = "box";
-        box.name = jsonObj.inputs.recipient;
+        box.name = jsonObj.outputs[0].public_keys[0];
         box.id = parent.style.borderBottomColor.toString().replace(/\s/g, '');
-        box.setAttribute("date", jsonObj.metadata.time);
+        box.setAttribute("date", get_time(jsonObj));
         var databoxID = this.databoxID;
         box.addEventListener("click", function(e) {
         if (this.className.includes("clicked")) {
             this.className = "box";
             remove_children(this.style.borderBottomColor.toString().replace(/\s/g, ''));
         } else {
-            create_box_for_new_children(this, databoxID);
-            this.className += " clicked";
+            if (create_box_for_new_children(this, databoxID))
+                this.className += " clicked";
         }
         }, false);
-        box.textContent = "Age: " + get_age(jsonObj.metadata.time) + "\r\n" +
+        box.textContent = "Age: " + get_age(get_time(jsonObj)) + "\r\n" +
                         "Transaction ID: " + jsonObj.id.slice(0, 11) + "...\r\n" +
-                        "Sender ID: " + jsonObj.inputs.sender.slice(0, 13) + "...\r\n" +
-                        "Recipient ID: " + jsonObj.inputs.recipient.slice(0, 11) + "...\r\n" +
-                        "Amount: " + jsonObj.inputs.quantity;
+                        "Sender ID: " + jsonObj.inputs[0].owners_before[0].slice(0, 13) + "...\r\n" +
+                        "Recipient ID: " + jsonObj.outputs[0].public_keys[0].slice(0, 11) + "...\r\n" +
+                        "Amount: " + jsonObj.outputs[0].amount;
 
         box.style.borderTopColor = parent.style.borderBottomColor;
         box.style.borderBottomColor = randColor();
@@ -105,6 +127,7 @@ function get_date(utcSeconds) {
 }
 
 function get_age(utcSeconds) {
+    if (utcSeconds == "N/A") return "N/A";
     var difference = Math.floor(Date.now() / 1000) - utcSeconds;
 
     if (difference < 60)
@@ -125,19 +148,26 @@ function get_age(utcSeconds) {
 function create_box_for_new_children(parent, databoxID) {
     var idNum = parseInt(databoxID.slice(12));
     if (idNum < number_of_databoxes) {
-        add_wallet_transactions(parent, listboxes[idNum]);
+        return add_wallet_transactions(parent, listboxes[idNum]);
     } else {
         const child = new DataboxSet(parent);
-        add_wallet_transactions(parent, child);
+        return add_wallet_transactions(parent, child);
     }
 }
 
 var currentTimeLog = 0;
 function add_wallet_transactions(parent, databox) {
+    if (!(parent.name in jsonDict)) return false;
+    var count_of_items = 0;
     for (const itemjson of jsonDict[parent.name]) {
-        if (itemjson.metadata.time >= parent.getAttribute("date"))
-            databox.createBox(parent, itemjson);
+        if (get_time(itemjson) > parent.getAttribute("date") || 
+            parent.getAttribute("date") == "N/A") {
+                databox.createBox(parent, itemjson);
+                count_of_items += 1;
+            }
     }
+    if (count_of_items > 0) return true;
+    return false;
 }
 
 function remove_children(parentColor) {
@@ -154,10 +184,10 @@ function remove_children(parentColor) {
 var parent = document.getElementById("root");
 var protocol = window.location.search.substring(1);
 if (protocol == "") {
-    protocol = '1QFr2MKF2aL9BJAkDr59XwTwdAmwhAgSa7';
+    protocol = '7G4FpYAT2hh1jwgUqq2bwv49QfCyQEQb3PqAiZcP4X5Z';
 }
 parent.name = protocol;
 parent.setAttribute("date", 100);
 parent.append("WalletID: " + protocol.slice(0,13) + "...");
 const child1 = new DataboxSet(document.getElementById("root"), "databoxLayer1");
-add_wallet_transactions(parent, child1)
+add_wallet_transactions(parent, child1);
