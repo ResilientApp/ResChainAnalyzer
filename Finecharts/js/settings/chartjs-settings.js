@@ -661,31 +661,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-function oldcreate(jsonString) {
-    const jsonData = JSON.parse(jsonString);
-    const elementsWithTime = jsonData.filter(element => element.metadata && element.metadata.time !== undefined);
-
-    var monthlyTransactions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-    for (let i = 0; i < elementsWithTime.length; i++) {
-        const block = elementsWithTime[i];
-        const timeData = block.metadata.time;
-        const transactionDate = new Date(timeData * 1000);
-        const transactionMonth = transactionDate.getMonth();
-
-        const pastYearThreshold = new Date();
-        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
-
-        if ((transactionDate > pastYearThreshold))
-        {
-            monthlyTransactions[transactionMonth]++;
-        }
-    }
-
-    return monthlyTransactions;
-}
-
 function create_dictionary_of_transactions(jsonString) {
     const jsonData = JSON.parse(jsonString);
     const elementsWithDate = jsonData.filter(element => element.asset && element.asset.data !== undefined && element.asset.data.Timestamp);
