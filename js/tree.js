@@ -118,7 +118,8 @@ fetch("https://crow.resilientdb.com/v1/transactions")
         function get_age(utcSeconds) {
             if (utcSeconds == "N/A") return "N/A";
             var difference = Math.floor(Date.now() / 1000) - utcSeconds;
-
+            if (difference < 0)
+                return "N/A";
             if (difference < 60)
                 return difference + " seconds ago";
             if (difference < 3600)

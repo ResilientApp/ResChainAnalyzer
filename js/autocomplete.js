@@ -30,9 +30,9 @@ function doStuff(jsonFile) {
 	jsonFile = JSON.parse(jsonFile);
 	for (const jsonObj of jsonFile) {
 		try {
-			if (!dict.includes(jsonObj.inputs[0].owners_before[0]))
+			if (!dict.includes(get_sender(jsonObj)))
 			{
-				dict.push(jsonObj.inputs[0].owners_before[0])
+				dict.push(get_sender(jsonObj))
 			}
 		} catch (error) {}
 	}

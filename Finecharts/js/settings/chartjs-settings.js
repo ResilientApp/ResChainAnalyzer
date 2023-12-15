@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     $(function () {
 
-        var transactionData = create_dictionary_of_transactions(jsonFile);
+        var transactionData = populate_trans(jsonFile);
         var lineData = {
             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September,", "October", "November", "December"],
             datasets: [
@@ -661,59 +661,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-function create_dictionary_of_transactions(jsonString) {
+function populate_trans(jsonString) {
     const jsonData = JSON.parse(jsonString);
-    const elementsWithDate = jsonData.filter(element => element.asset && element.asset.data !== undefined && element.asset.data.Timestamp);
-    const elementsWithTimeOne = jsonData.filter(element => element.asset && element.asset.data !== undefined && element.asset.data.additionalData !== undefined && element.asset.data.additionalData.timestamp);
-    const elementsWithTimeTwo = jsonData.filter(element => element.asset && element.asset.data !== undefined && element.asset.data.time);
-
-
     var monthlyTransactions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    for (let i = 0; i < elementsWithDate.length; i++) {
-        const block = elementsWithDate[i];
-        const timeData = block.asset.data.Timestamp;
-        const transactionDate = new Date(timeData);
-        const transactionMonth = transactionDate.getMonth();
-
-        const pastYearThreshold = new Date();
-        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
-
-        if ((transactionDate > pastYearThreshold))
-        {
-            monthlyTransactions[transactionMonth]++;
+    for (const jsonObj of jsonData) {
+        try {
+            var time = get_time(jsonObj);
+            if (time != "N/A") {
+                const transactionDate = new Date(time);
+    
+                const pastYearThreshold = new Date();
+                pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
+    
+                if ((transactionDate > pastYearThreshold))
+                {
+                    monthlyTransactions[transactionDate.getMonth()+1]++;
+                }
+            }
+        } catch (error) {
+            continue;
         }
     }
-
-    for (let i = 0; i < elementsWithTimeOne.length; i++) {
-        const block = elementsWithTimeOne[i];
-        const timeData = block.asset.data.additionalData.timestamp;
-        const transactionDate = new Date(timeData * 1000);
-        const transactionMonth = transactionDate.getMonth();
-
-        const pastYearThreshold = new Date();
-        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
-
-        if ((transactionDate > pastYearThreshold))
-        {
-            monthlyTransactions[transactionMonth]++;
-        }
-    }
-
-    for (let i = 0; i < elementsWithTimeTwo.length; i++) {
-        const block = elementsWithTimeTwo[i];
-        const timeData = block.asset.data.time;
-        const transactionDate = new Date(timeData * 1000);
-        const transactionMonth = transactionDate.getMonth();
-
-        const pastYearThreshold = new Date();
-        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
-
-        if ((transactionDate > pastYearThreshold))
-        {
-            monthlyTransactions[transactionMonth]++;
-        }
-    }
-
     return monthlyTransactions;
 }

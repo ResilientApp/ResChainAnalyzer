@@ -1,3 +1,8 @@
+//Return the transaction ID
+function get_id(jsonObj) {
+    return jsonObj.id;
+}
+
 //Return the sender of the transaction
 function get_sender(jsonObj) {
     return jsonObj.inputs[0].owners_before[0];
@@ -11,11 +16,6 @@ function get_recipient(jsonObj) {
 //Return the quantity exchanged in the transaction
 function get_amount(jsonObj) {
     return jsonObj.outputs[0].amount;
-}
-
-//Return the transaction ID
-function get_id(jsonObj) {
-    return jsonObj.id;
 }
 
 //Return the time in epoch time (seconds)
