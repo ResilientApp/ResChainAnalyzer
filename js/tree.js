@@ -20,14 +20,14 @@ fetch("https://crow.resilientdb.com/v1/transactions")
             jsonFile = JSON.parse(jsonFile);
             for (const jsonObj of jsonFile) {
                 try {
-                    dict[jsonObj.inputs[0].owners_before[0]] = [];
+                    dict[get_sender(jsonObj)] = [];
                 } catch (error) {}
             }
 
             for (const jsonObj of jsonFile) {
                 try {
                     //console.log(jsonObj);
-                    dict[jsonObj.inputs[0].owners_before[0]].push(jsonObj);
+                    dict[get_sender(jsonObj)].push(jsonObj);
                 } catch (error) {}
             }
 
@@ -37,27 +37,6 @@ fetch("https://crow.resilientdb.com/v1/transactions")
             }
 
             return dict;
-        }
-
-        function get_time(jsonObj) {
-            if (jsonObj.asset.data.Timestamp != undefined) {
-                var date = new Date(jsonObj.asset.data.Timestamp);
-                if (!isNaN(date.getTime()) && date.getTime() != undefined)
-                    return date.getTime();
-            }
-            else if (jsonObj.asset.data.timestamp != undefined) {
-                var date = new Date(jsonObj.asset.data.timestamp/1000);
-                if (!isNaN(date.getTime()) && date.getTime() != undefined)
-                    return date.getTime();
-            }
-            else if (jsonObj.asset.data.time != undefined) {
-                var date = new Date(jsonObj.asset.data.time/1000);
-                if (!isNaN(date.getTime()) && date.getTime() != undefined)
-                    return date.getTime();
-            }
-            else {
-                return "N/A";
-            }
         }
 
         class DataboxSet {
@@ -83,10 +62,10 @@ fetch("https://crow.resilientdb.com/v1/transactions")
                 tooltip.className = "tooltiptext";
                 tooltip.append("Date: " + String(get_date(get_time(jsonObj))) + "\r\n" +
                                 "Age: " + get_age(get_time(jsonObj)) + "\r\n" +
-                                "Transaction ID: " + "\r\n" + jsonObj.id + "\r\n" +
-                                "Sender ID: " + jsonObj.inputs[0].owners_before[0] + "\r\n" +
-                                "Recipient ID: " + jsonObj.outputs[0].public_keys[0] + "\r\n" +
-                                "Amount: " + jsonObj.outputs[0].amount
+                                "Transaction ID: " + "\r\n" + get_id(jsonObj) + "\r\n" +
+                                "Sender ID: " + get_sender(jsonObj) + "\r\n" +
+                                "Recipient ID: " + get_recipient(jsonObj) + "\r\n" +
+                                "Amount: " + get_amount(jsonObj)
                 ); 
 
                 return tooltip;
@@ -96,7 +75,7 @@ fetch("https://crow.resilientdb.com/v1/transactions")
             createBox(parent, jsonObj) {
                 var box = document.createElement("div");
                 box.className = "box";
-                box.name = jsonObj.outputs[0].public_keys[0];
+                box.name = get_recipient(jsonObj);
                 box.id = parent.style.borderBottomColor.toString().replace(/\s/g, '');
                 box.setAttribute("date", get_time(jsonObj));
                 var databoxID = this.databoxID;
@@ -110,10 +89,10 @@ fetch("https://crow.resilientdb.com/v1/transactions")
                 }
                 }, false);
                 box.textContent = "Age: " + get_age(get_time(jsonObj)) + "\r\n" +
-                                "Transaction ID: " + jsonObj.id.slice(0, 11) + "...\r\n" +
-                                "Sender ID: " + jsonObj.inputs[0].owners_before[0].slice(0, 13) + "...\r\n" +
-                                "Recipient ID: " + jsonObj.outputs[0].public_keys[0].slice(0, 11) + "...\r\n" +
-                                "Amount: " + jsonObj.outputs[0].amount;
+                                "Transaction ID: " + get_id(jsonObj).slice(0, 11) + "...\r\n" +
+                                "Sender ID: " + get_sender(jsonObj).slice(0, 13) + "...\r\n" +
+                                "Recipient ID: " + get_recipient(jsonObj).slice(0, 11) + "...\r\n" +
+                                "Amount: " + get_amount(jsonObj);
 
                 box.style.borderTopColor = parent.style.borderBottomColor;
                 box.style.borderBottomColor = randColor();
