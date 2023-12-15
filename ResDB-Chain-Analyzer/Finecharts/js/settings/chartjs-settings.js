@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function create_dictionary_of_transactions(jsonString) {
+function oldcreate(jsonString) {
     const jsonData = JSON.parse(jsonString);
     const elementsWithTime = jsonData.filter(element => element.metadata && element.metadata.time !== undefined);
 
@@ -671,6 +671,63 @@ function create_dictionary_of_transactions(jsonString) {
     for (let i = 0; i < elementsWithTime.length; i++) {
         const block = elementsWithTime[i];
         const timeData = block.metadata.time;
+        const transactionDate = new Date(timeData * 1000);
+        const transactionMonth = transactionDate.getMonth();
+
+        const pastYearThreshold = new Date();
+        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
+
+        if ((transactionDate > pastYearThreshold))
+        {
+            monthlyTransactions[transactionMonth]++;
+        }
+    }
+
+    return monthlyTransactions;
+}
+
+function create_dictionary_of_transactions(jsonString) {
+    const jsonData = JSON.parse(jsonString);
+    const elementsWithDate = jsonData.filter(element => element.asset && element.asset.data !== undefined && element.asset.data.Timestamp);
+    const elementsWithTimeOne = jsonData.filter(element => element.asset && element.asset.data !== undefined && element.asset.data.additionalData !== undefined && element.asset.data.additionalData.timestamp);
+    const elementsWithTimeTwo = jsonData.filter(element => element.asset && element.asset.data !== undefined && element.asset.data.time);
+
+
+    var monthlyTransactions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    for (let i = 0; i < elementsWithDate.length; i++) {
+        const block = elementsWithDate[i];
+        const timeData = block.asset.data.Timestamp;
+        const transactionDate = new Date(timeData);
+        const transactionMonth = transactionDate.getMonth();
+
+        const pastYearThreshold = new Date();
+        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
+
+        if ((transactionDate > pastYearThreshold))
+        {
+            monthlyTransactions[transactionMonth]++;
+        }
+    }
+
+    for (let i = 0; i < elementsWithTimeOne.length; i++) {
+        const block = elementsWithTimeOne[i];
+        const timeData = block.asset.data.additionalData.timestamp;
+        const transactionDate = new Date(timeData * 1000);
+        const transactionMonth = transactionDate.getMonth();
+
+        const pastYearThreshold = new Date();
+        pastYearThreshold.setFullYear(pastYearThreshold.getFullYear() - 1);
+
+        if ((transactionDate > pastYearThreshold))
+        {
+            monthlyTransactions[transactionMonth]++;
+        }
+    }
+
+    for (let i = 0; i < elementsWithTimeTwo.length; i++) {
+        const block = elementsWithTimeTwo[i];
+        const timeData = block.asset.data.time;
         const transactionDate = new Date(timeData * 1000);
         const transactionMonth = transactionDate.getMonth();
 
